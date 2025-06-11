@@ -39,4 +39,15 @@
   };
 
 
+  # GNOME wallpaper via dconf
+  dconf.settings = {
+    "org/gnome/desktop/background" = {
+      picture-uri = "file:///home/adrian/MEGA/Wallpapers/CatppuccinMocha-Kurzgesagt-CloudyQuasar1.png";
+      picture-options = "zoom";
+    };
+    "org/gnome/mutter" = {
+      # note: this must be a plain list, not a mkList
+      experimental-features = [ "scale-monitor-framebuffer" ];
+    };
+  };
 }

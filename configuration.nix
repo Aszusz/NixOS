@@ -63,23 +63,6 @@
 
   # turn on fractional-scaling support in mutter
   programs.dconf.enable = true;
-  programs.dconf.profiles = {
-    # the built-in user profile
-    user = {
-      # each profile has a list of "databases"
-      databases = [
-        {
-          # here we place our key-values
-          settings = {
-            "org/gnome/mutter" = {
-              # note: this must be a plain list, not a mkList
-              experimental-features = [ "scale-monitor-framebuffer" ];
-            };
-          };
-        }
-      ];
-    };
-  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
