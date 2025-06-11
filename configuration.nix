@@ -10,6 +10,14 @@
       ./hardware-configuration.nix
     ];
 
+  # Enable home-manager for user 'adrian'
+  home-manager = {
+    useGlobalPkgs = true;
+    useUserPackages = true;
+    users.adrian = import ./home/adrian/home.nix;
+  };
+
+
   # System features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -109,13 +117,7 @@
     isNormalUser = true;
     description = "Adrian Szuszkiewicz";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      chromium
-      vscodium
-      bitwarden
-      windsurf
-      ghostty
-    ];
+
   };
 
   # Install firefox.
