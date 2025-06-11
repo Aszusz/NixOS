@@ -17,4 +17,21 @@
     userName = "Adrian Szuszkiewicz";
     userEmail = "adrianszuszkiewicz@gmail.com";
   };
+
+  # Chromium extensions
+  programs.chromium = {
+    enable = true;
+    extensions = [
+      # uBlock Origin Lite
+      "ddkjiahejlhfcafbddmgiahcphecmpfh"
+      # Bitwarden
+      "nngceckbapebfimnlniiiahkandclblb"
+      # Vimium
+      "dbepggeogbaibhgnhhndojpepiihcmeb"
+      # Accept all cookies
+      "ofpnikijgfhlmmjlpkfaifhhdonchhoi"
+    ];
+  };
+
+
 }
