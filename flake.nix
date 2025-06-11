@@ -50,7 +50,7 @@
         inherit pkgs;
         extraSpecialArgs = { inherit pkgs-unstable; };
         modules = [
-          ./home/adrian/home.nix
+          ./home.nix
         ];
       };
     };
