@@ -1,11 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-unstable, ... }:
 {
   home.stateVersion = "25.05";
   home.packages = [
     pkgs.chromium
     pkgs.vscodium
     pkgs.bitwarden
-    pkgs.windsurf
+    pkgs-unstable.windsurf
     pkgs.ghostty
     pkgs.fastfetch
     pkgs.megasync
