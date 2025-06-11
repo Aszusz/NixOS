@@ -12,6 +12,7 @@
       ./nixos-modules/locale.nix
       ./nixos-modules/audio.nix
       ./nixos-modules/networking.nix
+      ./nixos-modules/boot.nix
     ];
 
 
