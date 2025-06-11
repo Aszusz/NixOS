@@ -8,6 +8,11 @@
     pkgs.windsurf
     pkgs.ghostty
     pkgs.fastfetch
+    pkgs.megasync
+    # GNOME Extensions
+    pkgs.gnomeExtensions.paperwm
+    pkgs.gnomeExtensions.blur-my-shell
+    pkgs.gnomeExtensions.appindicator
   ];
   # Add more Home Manager options here as needed
 
