@@ -4,8 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, ... }:
@@ -25,6 +27,7 @@
         inherit system;
         inherit (nixpkgsConfig) config;
       };
+      username = "adrian";
     in
     {
       # NixOS system configurations
@@ -34,15 +37,21 @@
           modules = [
             ./hardware-configuration.nix
             ./configuration.nix
-            home-manager.nixosModules.home-manager
             {
               # Make unstable packages available to all modules
               _module.args.pkgs-unstable = pkgs-unstable;
-              # Configure home-manager to use this argument as well
-              home-manager.extraSpecialArgs = { inherit pkgs-unstable; };
             }
           ];
         };
+      };
+      
+      # Standalone home-manager configuration
+      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit pkgs-unstable; };
+        modules = [
+          ./home/adrian/home.nix
+        ];
       };
     };
 }

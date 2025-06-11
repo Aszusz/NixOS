@@ -1,5 +1,12 @@
 { config, pkgs, pkgs-unstable, ... }:
 {
+  # Let Home Manager install and manage itself
+  programs.home-manager.enable = true;
+  
+  # Home Manager needs a bit of information about you and the paths it should manage
+  home.username = "adrian";
+  home.homeDirectory = "/home/adrian";
+  
   home.stateVersion = "25.05";
   home.packages = [
     pkgs.chromium
@@ -9,6 +16,7 @@
     pkgs.ghostty
     pkgs.fastfetch
     pkgs.megasync
+    pkgs.caprine
     # GNOME Extensions
     pkgs.gnomeExtensions.paperwm
     pkgs.gnomeExtensions.blur-my-shell

@@ -10,12 +10,6 @@
       ./hardware-configuration.nix
     ];
 
-  # Enable home-manager for user 'adrian'
-  home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    users.adrian = import ./home/adrian/home.nix;
-  };
 
 
   # System features
