@@ -10,4 +10,11 @@
     pkgs.fastfetch
   ];
   # Add more Home Manager options here as needed
+
+  # Git configuration
+  programs.git = {
+    enable = true;
+    userName = "Adrian Szuszkiewicz";
+    userEmail = "adrianszuszkiewicz@gmail.com";
+  };
 }
