@@ -4,6 +4,7 @@
     ./home-modules/windsurf.nix
     ./home-modules/chromium.nix
     ./home-modules/gnome-settings.nix
+    ./home-modules/direnv.nix
   ];
   # Let Home Manager install and manage itself
   programs.home-manager.enable = true;
