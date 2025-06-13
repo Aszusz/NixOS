@@ -14,11 +14,7 @@
     let
       system = "x86_64-linux";
       # Allow unfree packages for both stable and unstable
-      nixpkgsConfig = {
-        config = {
-          allowUnfree = true;
-        };
-      };
+      nixpkgsConfig = { config = { allowUnfree = true; }; };
       pkgs = import nixpkgs {
         inherit system;
         inherit (nixpkgsConfig) config;
@@ -28,8 +24,7 @@
         inherit (nixpkgsConfig) config;
       };
       username = "adrian";
-    in
-    {
+    in {
       # NixOS system configurations
       nixosConfigurations = {
         thinkbook = nixpkgs.lib.nixosSystem {
@@ -44,14 +39,13 @@
           ];
         };
       };
-      
+
       # Standalone home-manager configuration
-      homeConfigurations.${username} = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit pkgs-unstable; };
-        modules = [
-          ./home.nix
-        ];
-      };
+      homeConfigurations.${username} =
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit pkgs-unstable; };
+          modules = [ ./home.nix ];
+        };
     };
 }

@@ -5,21 +5,17 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./nixos-modules/desktop.nix
-      ./nixos-modules/locale.nix
-      ./nixos-modules/audio.nix
-      ./nixos-modules/networking.nix
-      ./nixos-modules/boot.nix
-    ];
-
-
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./nixos-modules/desktop.nix
+    ./nixos-modules/locale.nix
+    ./nixos-modules/audio.nix
+    ./nixos-modules/networking.nix
+    ./nixos-modules/boot.nix
+  ];
 
   # System features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -61,6 +57,7 @@
     nh
     fastfetch
     appimage-run
+    nixfmt-classic
   ];
 
   # Environment variables moved to ./nixos-modules/networking.nix

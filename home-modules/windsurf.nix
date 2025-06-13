@@ -9,14 +9,14 @@
       # Theme and Icons
       catppuccin.catppuccin-vsc
       catppuccin.catppuccin-vsc-icons
-      
+
       # Nix support
       jnoortheen.nix-ide
-      
+
       # Code quality and formatting
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
-      
+
       # Git tools
       mhutchie.git-graph
     ];
