@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration for thinkbook using flakes";
+  description = "NixOS configuration for thinkbook and nixvm using flakes";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
@@ -30,8 +30,18 @@
         thinkbook = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [
-            ./hardware-configuration.nix
-            ./configuration.nix
+            ./hosts/thinkbook/configuration.nix
+            {
+              # Make unstable packages available to all modules
+              _module.args.pkgs-unstable = pkgs-unstable;
+            }
+          ];
+        };
+
+        nixvm = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/nixvm/configuration.nix
             {
               # Make unstable packages available to all modules
               _module.args.pkgs-unstable = pkgs-unstable;
@@ -40,7 +50,7 @@
         };
       };
 
-      # Standalone home-manager configuration
+      # Standalone home-manager configuration (shared between hosts)
       homeConfigurations.${username} =
         home-manager.lib.homeManagerConfiguration {
           inherit pkgs;

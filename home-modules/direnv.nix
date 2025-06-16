@@ -9,7 +9,7 @@
     config = {
       whitelist = {
         prefix = [
-          "/home/adrian/Repos"  # This will allow all subdirectories
+          "/home/adrian/Repos" # This will allow all subdirectories
         ];
       };
     };
